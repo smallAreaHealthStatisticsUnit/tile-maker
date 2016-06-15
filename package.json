@@ -1,6 +1,6 @@
 {
   "name": "Tile Maker",
-  "description": "Node web services and example front end to convert a collection of ESRI shapefiles into a complete administrative geography; e.g USA, states, counties, census tracts, census block groups into TopoJSON tiles optimised for a series to map zoomlevels. Typically zoomlevels 6-11 are supported. The web services contain a very simple tile server for testing; the user then dowmnloads the tiles for deploying a OSM 'standard' style compliant map server",
+  "description": "Node web services and example front end to convert a collection of ESRI shapefiles into a complete administrative geography; e.g USA, states, counties, census tracts, census block groups into TopoJSON tiles optimised for a series to map zoomlevels. Typically zoomlevels 6-11 are supported. The web services contain a very simple tile server for testing; the user then downloads the tiles for deploying a OSM 'standard' style compliant map server",
   "version": "0.0.1",
   "private": false,
   "author": [
@@ -36,11 +36,9 @@
     "magic-globals": "^0.5.0",
     "mapshaper": "^0.3.25",
     "morgan": "^1.7.0",
-    "msnodesqlv8": "^0.1.45",
     "mutexjs": "^1.2.0",
     "node-uuid": "^1.4.7",
     "object-sizeof": "^1.0.10",
-    "pg": "^4.5.6",
     "reproject": "^1.1.1",
     "request": "^2.72.0",
     "request-debug": "^0.2.0",
