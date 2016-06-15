@@ -31,7 +31,7 @@ This repository is currently a stub; the actual code will be transferred from th
 
 Note: a much better JQuery-UI prototype that has the RIF look and feel will appear shortly.
 
-![ Tiler Maker early prototype prototpye displaying US census data to County level, zoomed into the the South Esstern United States ](rifWebPlatform/web/docs/screenshots/Tile-Maker_screenshot.png?raw=true "Tile Maker prototpye")
+![ Tiler Maker early prototype prototpye displaying US census data to County level, zoomed into the the South Esstern United States ](Images/Tile-Maker_screenshot.png?raw=true "Tile Maker prototpye")
 
 #### Work flow
 
