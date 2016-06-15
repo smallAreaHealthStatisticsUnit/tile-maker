@@ -31,7 +31,7 @@ This repository is currently a stub; the actual code will be transferred from th
 
 Note: a much better JQuery-UI prototype that has the RIF look and feel will appear shortly.
 
-![ Data Viewer prototpye for Disease mapping ](rifWebPlatform/web/docs/screenshots/Tile-Maker_screenshot.png?raw=true "Tile Maker prototpye")
+![ Tiler Maker early prototype prototpye displaying US census data to County level, zoomed into the the South Esstern United States ](rifWebPlatform/web/docs/screenshots/Tile-Maker_screenshot.png?raw=true "Tile Maker prototpye")
 
 #### Work flow
 
@@ -47,16 +47,21 @@ Note: a much better JQuery-UI prototype that has the RIF look and feel will appe
 8. The Node service containues to process to produce the tiles for the required zoomlevels;
 9. When complete the GUI displays the tiles
 
-### Node web service processing
+The processing setup is savable to an XML file; this can be used in a "batch" mode to the Node.js web service and provide the interface for 
+the RIF's own Java based data cleaning and loading tool or other tools.
+
+The GUI and the web service will accept geoJSON files; if the XML file is provided 
+
+### Node.js web service processing
 
 [Add processing events]
 
 ### Limits
 
-1. Memory; Node back end requires approxiately 7x the uncompressed size of the shapefiles
+1. Memory; the Node.js back end requires approxiately 7x the uncompressed size of the shapefiles
 2. Browsers; Internet Explorer 10+, the latest Chrome and Firefox will be tested. 
-   a) Leaflet on IE has severe problerms with >20M of JSON data; it does work - it is just abysmally slow!
-   b) Firefox 47.0 has a bad bug (1274010) which causes large xmlhttprequest POSTs to fail randomly . It apperars to be fix in beta. 
-      Previous Firefox releases could handle multi Giga bytes file loads
-   c) Chrome will barf with very large files , but is fine to 300-500 MB.
+     a) Leaflet on IE has severe problerms with >20M of JSON data; it does work - it is just abysmally slow!
+     b) Firefox 47.0 has a bad bug (1274010) which causes large xmlhttprequest POSTs to fail randomly . It apperars to be fix in beta. 
+        Previous Firefox releases could handle multi GB file loads
+     c) Chrome will barf with very large files, but is fine to 300-500 MB.
 3. There is a hard limit of 255M per shapefile record. This is the Node.js string limit.   
