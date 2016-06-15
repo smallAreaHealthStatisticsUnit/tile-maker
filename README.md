@@ -19,19 +19,44 @@ related to industrial sites. The tool uses health, environmental, socio-economic
 risks in relation to sources of exposure and to generate maps. The RIF, and Tile Maker, has been developed by the Small Area 
 Health Statistics Unit and Imperial College, London.
 
-SAHSU has developed a rapid inquiry facility (RIF) to permit fast and versatile exploration of the small area data held in 
+SAHSU has developed a rapid inquiry facility (RIF) http://www.sahsu.org/content/rapid-inquiry-facility to permit fast and versatile exploration of the small area data held in 
 national databases in response to urgent queries about environmental hazards. The RIF has been widely disseminated in Europe 
 (with EU funding) and the USA (as part of the CDC Environmental Public Health Tracking (EPHT) Program). 
  
 This repository is currently a stub; the actual code will be transferred from the RIF in Q3/Q4 2016.
 
-[Add reference to RIF; standardise RIF text]
+![ Data Viewer prototpye for Disease mapping ](Images/RIF_disease_mapping_screenshot.png?raw=true "Data Viewer prototpye for Disease mapping")
 
 ### Graphical User Interface
 
-[Add mock up]
+Note: a much better JQuery-UI prototype that has the RIF look and feel will appear shortly.
 
-[Add work flow]
+![ Data Viewer prototpye for Disease mapping ](rifWebPlatform/web/docs/screenshots/Tile-Maker_screenshot.png?raw=true "Tile Maker prototpye")
+
+#### Work flow
+
+1. Select a set of shapefiles. Zip files are supported;
+2. GUI unpacks zip files, processing DBF and ESRI extended attribute files (.shp.ea.iso.xml) to extract meta data;
+3. The Name of the administrative geography is defined (e.g. United States 2014 Census);
+4. For each shapefile (or geolevel) select the field containing the adminstrative code or areaID (e.g. MT) and the adminstrative Name (e.g. Montana);
+5. The quantization, zoomlevel range and the inter zoomlevel simplification factor are defaulted. These can be changed;
+5. The files are uploaded to the tileMaker Node.js service for processing;
+6. The GUI provides status on Node service processing until the initial simplication is complete;
+7. The topoJSON is fetched and displayed using Leaflet: http://leafletjs.com/; below zoomlevel 6 only shapefiles with less than 200 areas are displayed; shapefiles with more 
+   than 10,000 area are suppressed. This is prevent browser crashes before tile production;
+8. The Node service containues to process to produce the tiles for the required zoomlevels;
+9. When complete the GUI displays the tiles
 
 ### Node web service processing
 
+[Add processing events]
+
+### Limits
+
+1. Memory; Node back end requires approxiately 7x the uncompressed size of the shapefiles
+2. Browsers; Internet Explorer 10+, the latest Chrome and Firefox will be tested. 
+   a) Leaflet on IE has severe problerms with >20M of JSON data; it does work - it is just abysmally slow!
+   b) Firefox 47.0 has a bad bug (1274010) which causes large xmlhttprequest POSTs to fail randomly . It apperars to be fix in beta. 
+      Previous Firefox releases could handle multi Giga bytes file loads
+   c) Chrome will barf with very large files , but is fine to 300-500 MB.
+3. There is a hard limit of 255M per shapefile record. This is the Node.js string limit.   
